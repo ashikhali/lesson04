@@ -1,0 +1,7 @@
+//task hello {
+//    description "This is hello task"
+//
+//    doLast {
+//        println "Hello task SUB"
+//    }
+//}

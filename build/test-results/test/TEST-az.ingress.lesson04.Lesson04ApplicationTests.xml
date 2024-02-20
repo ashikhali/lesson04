@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="az.ingress.lesson04.Lesson04ApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-18T21:10:55" hostname="Amins-MacBook-Pro.local" time="0.296">
+  <properties/>
+  <testcase name="contextLoads()" classname="az.ingress.lesson04.Lesson04ApplicationTests" time="0.296"/>
+  <system-out><![CDATA[2024-02-19 01:10:53.807 INFO  [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [az.ingress.lesson04.Lesson04ApplicationTests]: Lesson04ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-19 01:10:53.859 INFO  [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration az.ingress.lesson04.Lesson04Application for test class az.ingress.lesson04.Lesson04ApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2024-02-19 01:10:54.025 INFO  [kground-preinit]      o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-02-19 01:10:54.036 INFO  [    Test worker]    a.i.lesson04.Lesson04ApplicationTests : Starting Lesson04ApplicationTests using Java 17.0.5 with PID 11343 (started by ashikhali in /Users/ashikhali/Documents/Ingress/lesson04)
+2024-02-19 01:10:54.036 DEBUG [    Test worker]    a.i.lesson04.Lesson04ApplicationTests : Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-02-19 01:10:54.036 INFO  [    Test worker]    a.i.lesson04.Lesson04ApplicationTests : The following 2 profiles are active: "db", "common"
+2024-02-19 01:10:54.381 INFO  [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-19 01:10:54.404 INFO  [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interface.
+2024-02-19 01:10:54.613 INFO  [    Test worker]  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-19 01:10:54.646 INFO  [    Test worker]                    org.hibernate.Version : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-19 01:10:54.663 INFO  [    Test worker]    o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-02-19 01:10:54.757 INFO  [    Test worker]      o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-19 01:10:54.770 INFO  [    Test worker]       com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-02-19 01:10:54.863 INFO  [    Test worker]        com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f6fd101
+2024-02-19 01:10:54.864 INFO  [    Test worker]       com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-02-19 01:10:55.278 INFO  [    Test worker]       o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-19 01:10:55.314 INFO  [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+Creating new instance of Test class
+Creating new instance of Test class
+2--ModelMapper
+1--ModelMapper
+Created instance of FruitServiceImpl az.ingress.lesson04.services.FruitServiceImpl@77604a86
+Injected instance of fruit service az.ingress.lesson04.services.FruitServiceImpl@77604a86
+The value of first name is: Amin
+The value of student Student(firstName=Amin, lastName=Sh, age=27, lessons=[OCA, OCP, OCM], marks={oca=60, ocp=50, ocm=23}, grades={oca=Lessons(name=OCA, mark=70), ocp=Lessons(name=OCP, mark=50)})
+2-1--ModelMapper
+2024-02-19 01:10:55.760 INFO  [    Test worker]    a.i.lesson04.Lesson04ApplicationTests : Started Lesson04ApplicationTests in 1.834 seconds (process running for 2.36)
+Initialisation Completed
+az.ingress.lesson04.config.Test@1ead6e20
+az.ingress.lesson04.config.Test@59f56892
+org.modelmapper.ModelMapper@7e58b0f6
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

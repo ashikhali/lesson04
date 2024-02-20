@@ -1,0 +1,102 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'com.bmuschko.docker-remote-api' version "$dockerVersion" apply true
+}
+
+
+group = 'az.ingress'
+def hash = 'git rev-parse --short HEAD'.execute().text.trim()
+version = "$projectVersion.$hash"
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+allprojects {
+
+	repositories {
+		mavenCentral()
+	}
+}
+
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
+
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+//	implementation 'com.github.docker-java:docker-java:3.2.13'
+//	implementation 'com.github.docker-java:docker-java-transport-httpclient5:3.2.13'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task dockerFile(type: Dockerfile, dependsOn: assemble) {
+	destFile.set(project.file('Dockerfile'))
+	from "alpine:$alpineVersion"
+	runCommand 'apk add --no-cache openjdk17'
+	runCommand 'apk add --no-cache tzdata'
+	copyFile "build/libs/${project.name}-${project.version}.jar", '/app/'
+	copyFile "gradle.properties", '/app/gradle.properties'
+	workingDir '/app/'
+	entryPoint 'java'
+	defaultCommand '-jar', "/app/${project.name}-${project.version}.jar"
+}
+
+
+task dockerBuild(type: DockerBuildImage, dependsOn: dockerFile) {
+	inputDir.set(file("$projectDir/."))
+	doLast {
+		println("creatig image: $dockerRepoUrl/ing-${project.name}:$version")
+	}
+	images.add("$dockerRepoUrl/ing-${project.name}:$version")
+}
+
+task dockerPush(type: DockerPushImage, dependsOn: dockerBuild) {
+	images.add("$dockerRepoUrl/ing-${project.name}:$version")
+
+	registryCredentials.setUsername("$dockerHubUsername")
+	registryCredentials.setPassword("$dockerHubPassword")
+	registryCredentials.setEmail("$dockerHubEmail")
+}
+
+task hello {
+	description "This is hello task"
+	doFirst {
+		println "Hello task ROOT"
+	}
+}
+
+
+def subProjects = [
+		project(':sub-module')
+]
+
+configure(subProjects) {
+	task hello() {
+		description "This is an example task:"
+
+		doFirst { print "Hello in ROOT " }
+	}
+}

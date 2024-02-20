@@ -1,0 +1,24 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /fruit1
+
+amin:
+  age: 27
+  last-name: Sh
+  first-name: Amin
+  lessons:
+    - OCA
+    - OCP
+    - OCM
+  marks:
+    oca: 60
+    ocp: 50
+    ocm: 23
+  grades:
+    oca:
+      name: OCA
+      mark: 70
+    ocp:
+      name: OCP
+      mark: 50
